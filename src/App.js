@@ -1,30 +1,34 @@
 import React from 'react';
 import './App.css';
+import pets from './pets';
 
 function App() {
-  const topic ="Node";
-  const age = 6;
-  const likes = ["React","Express","Mongo","Node"];
-  return (
-    <div id="someId">
-      {/* string */}
-      <h1 id="header-id">{topic} is awesome!!</h1>
-      {/* number */}
-      <h2>{age}</h2>
-      {/* array */}
-      <h2>{likes[3]}</h2>
-      {/* booleans */}
-      <h2>{String(true)}</h2>
-      {/* conditional */}
-      {
-        false ? <h3>Test</h3>: <h3>Passed</h3>
-      }
-      {/* loop using map */}
-      {
-        likes.map(like => <h3 key={like}>{like}</h3>)
-      }
+    return (
+    <div className='App'>
+      <h1 className='header'>Pets</h1>
+      <ul className='container'>
+        {
+          pets.map((pet, index)=>(
+            <li key={index}>
+              <h1>{pet.name}</h1>
+              <p>{pet.description}</p>
+              <img src={pet.image}
+                alt={pet.name}
+                width="200px"
+                height="200px" />
+              <ul className='skills'>
+                {
+                  pet.skills.map((skill,index)=>(
+                    <li key={skill}>{skill}</li>
+                  ))
+                }
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
     </div>
-  );
+  )
 }
 
 export default App;
